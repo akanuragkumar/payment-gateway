@@ -62,7 +62,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
         "is_active": true
     }
 ]
-    
+```    
 
 ### `This Endpoint takes the payment details and returns appropriate response ` 
 
