@@ -25,9 +25,9 @@ To work in a sandboxed Python environment it is recommended to install the app i
    $ python manage.py test payment_api
    ``` 
 ## Assumptions:
-1. The PaymentMethod table contains payment type-(i.e- debit card, credit card) and curreny(i.e- USD, Euro). This is required as we can add as many payment type and currency we are currently supporting. It is a non- editable fields and we can only disable it by setting the is_active to false. Here type means-(currency or payment_type) and subtype denotes-(euro,creditcard,usd,debitcard).
+1. The PaymentMethod table contains payment type-(i.e- debit card, credit card) and curreny(i.e- USD, Euro). This is required as we can add as many payment type and currency we are currently supporting. It is a non- editable field and we can only disable it by setting the is_active to false. Here type denotes-(currency or payment_type) and subtype denotes-(euro, creditcard, usd, debitcard).
 2. For making payment, we first check whether type and currency both are present and in active state in PaymentMethod table.
-3. Here we have used random function for generating success or failure for the payment.
+3. Here we have used random function for generating success or failure for the payment. In real scenario it would depend on number of cases like account balance etc.
 4. We have also done schema validation in place for json field 'card'.
 5. For authorization code we are using UUID4 and it is an indexed primary key in PaymentDetail table
 
