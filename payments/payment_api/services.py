@@ -49,6 +49,29 @@ class PaymentDetailService:
             return Response({
                 'error': 'Card detail data is not correct'
             }, status=status.HTTP_400_BAD_REQUEST)
+        """chech the card expiry, if expired return appropriate response"""
+        today = datetime.today()
+        month_year = str(datetime(today.year, today.month, 1))[:-9].split('-')
+        current_year = int(month_year[0])
+        current_month = int(month_year[1])
+        expirationMonth = str(request.data['card']['expirationMonth'])
+        expirationYear = int(request.data['card']['expirationYear'])
+        if expirationMonth[0] == "0":
+            expirationMonth = int(expirationMonth[1:2])
+        expirationMonth = int(expirationMonth)
+        if expirationYear > current_year:
+            pass
+        elif expirationYear == current_year:
+            if expirationMonth >= current_month:
+                pass
+            else:
+                return Response({
+                    'error': 'your card is expired'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({
+                'error': 'your card is expired'
+            }, status=status.HTTP_400_BAD_REQUEST)
         try:
             payment_method_data = PaymentMethod.objects.filter(subtype=request.data['type'], is_active=True)
             currency_data = PaymentMethod.objects.filter(subtype=request.data['currency'], is_active=True)
