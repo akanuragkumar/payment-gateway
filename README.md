@@ -1,4 +1,4 @@
-# payment-gateway
+# Payment Gateway
 This app is a mock for payment gateway service
 ## Quickstart
 
