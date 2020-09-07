@@ -113,4 +113,24 @@ class TodoListCreateAPIViewTestCase(APITestCase):
                                                     "card": {"number": 4111111111111111, "expirationMonth": 2,
                                                              "expirationYear": 2020}},
                                                    format='json')
-        self.assertEqual(400, response_payment_detail.status_code)        
+        self.assertEqual(400, response_payment_detail.status_code)   
+        
+        def test_create_payment_detail_invalid_card_digit_count(self):
+        response_payment_method_currency = self.client.post(self.url_payment_method, {
+            "type": "currency",
+            "subtype": "Euro"
+        })
+        self.assertEqual(200, response_payment_method_currency.status_code)
+
+        response_payment_method_type = self.client.post(self.url_payment_method, {
+            "type": "payment_type",
+            "subtype": "Debit Card"
+        })
+        self.assertEqual(200, response_payment_method_type.status_code)
+
+        response_payment_detail = self.client.post(self.url_payment_detail,
+                                                   {"currency": "Euro", "type": "Debit Card", "amount": 500,
+                                                    "card": {"number": 41111111111111111, "expirationMonth": 2,
+                                                             "expirationYear": 2020}},
+                                                   format='json')
+        self.assertEqual(400, response_payment_detail.status_code) 
