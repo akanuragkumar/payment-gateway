@@ -97,7 +97,7 @@ class PaymentDetailService:
             return Response({
                 'type': serializer.data['type'],
                 'currency': serializer.data['currency'],
-                'amount': serializer.data['amount'],
+                'amount': '%g'%(serializer.data['amount']),
                 'card': {'number': serializer.data['card']['number']},
                 'status': data_object.status,
                 'authorization_code': data_object.payment_uuid,
