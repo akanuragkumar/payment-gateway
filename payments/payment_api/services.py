@@ -2,6 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.http.response import JsonResponse
 from jsonschema import validate
+from datetime import datetime
+import math
 from payment_api.models import PaymentMethod, PaymentDetail
 from payment_api.serializers import PaymentMethodSerializer, PaymentDetailSerializer
 
@@ -49,6 +51,14 @@ class PaymentDetailService:
             return Response({
                 'error': 'Card detail data is not correct'
             }, status=status.HTTP_400_BAD_REQUEST)
+        """check the card number count, it should be always equal to 16, else throw appropriate error"""
+        card_number_count = int(math.log10(request.data['card']['number']))+1
+        if card_number_count == 16:
+            pass
+        else:
+            return Response({
+                    'error': 'your card number is not of 16 digits'
+                }, status=status.HTTP_400_BAD_REQUEST)
         """chech the card expiry, if expired return appropriate response"""
         today = datetime.today()
         month_year = str(datetime(today.year, today.month, 1))[:-9].split('-')
