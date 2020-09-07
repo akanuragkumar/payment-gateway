@@ -32,7 +32,8 @@ To work in a sandboxed Python environment it is recommended to install the app i
 4. We check whether the card has expired or not by checking the year and month. In month field we can give- 9 or 09, both the cases have been handled.
 5. Here we have used random function for generating success or failure for the payment. In real scenario it would depend on number of cases like account balance etc.
 6. We have also done schema validation in place for json field 'card'.
-7. For authorization code we are using UUID4 and it is an indexed primary key in PaymentDetail table.
+7. Float formatting in place for amount field while returning the response from API to remove trailling zeros.
+8. For authorization code we are using UUID4 and it is an indexed primary key in PaymentDetail table.
 
 ### [Link for screenshots of API response](https://github.com/akanuragkumar/payment-gateway/tree/master/screenshots)   
 ## API Documentation 
