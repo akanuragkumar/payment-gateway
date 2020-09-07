@@ -42,7 +42,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
 ```json
  application/json - {
     "type":"payment_type",
-    "subtype":"Debit card"
+    "subtype":"debitcard"
 }
 ```
 ##### `response`
@@ -50,7 +50,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
 ```json
 {
     "type": "payment_type",
-    "subtype": "Debit card"
+    "subtype": "debitcard"
 }   
 ```
 2. `GET /api/payment-method` 
@@ -94,7 +94,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
 
 ```json
 {
-    "type": "Debit card",
+    "type": "debitcard",
     "currency": "Euro",
     "amount": 500,
     "card": {
