@@ -34,7 +34,7 @@ class PaymentMethod(BaseModel):
 class PaymentDetail(BaseModel):
     type = models.CharField(max_length=100, null=False)
     currency = models.CharField(max_length=100, null=False)
-    amount = models.IntegerField(null=False)
+    amount = models.FloatField(null=False)
     card = jsonfield.JSONField()
     status = models.CharField(max_length=100)
     payment_uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
