@@ -21,7 +21,7 @@ class PaymentMethodSerializer(serializers.Serializer):
 class PaymentDetailSerializer(serializers.Serializer):
     type = serializers.CharField(required=True)
     currency = serializers.CharField(required=True)
-    amount = serializers.IntegerField(required=True)
+    amount = serializers.FloatField(required=True)
     card = serializers.JSONField(required=True)
 
     @transaction.atomic()
