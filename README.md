@@ -27,7 +27,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
 ## Assumptions:
 1. The PaymentMethod table contains payment type-(i.e- debit card, credit card) and curreny(i.e- USD, Euro). This is required as we can add as many payment type and currency we are currently supporting. It is a non- editable field and we can only disable it by setting the is_active to false. Here type denotes-(currency or payment_type) and subtype denotes-(euro, creditcard, usd, debitcard).
 2. For making payment, we first check whether type and currency both are present and in active state in PaymentMethod table.
-3. We have made an assumption that card digit count should always be equal to 16, so if the card digit count is less than or greater than 16, it throws error.
+3. We have made an assumption that card numner digit should always be equal to 16, so if the card number digit is less than or greater than 16, it throws error.
 4. We check whether the card has expired or not by checking the year and month. In month field we can give- 9 or 09, both the cases have been handled.
 5. Here we have used random function for generating success or failure for the payment. In real scenario it would depend on number of cases like account balance etc.
 6. We have also done schema validation in place for json field 'card'.
