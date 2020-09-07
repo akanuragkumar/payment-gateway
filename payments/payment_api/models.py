@@ -30,7 +30,7 @@ class PaymentMethod(BaseModel):
         verbose_name = _('Payment Method')
         verbose_name_plural = _('Payment Methods')
 
-
+ 
 class PaymentDetail(BaseModel):
     type = models.CharField(max_length=100, null=False)
     currency = models.CharField(max_length=100, null=False)
